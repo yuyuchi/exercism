@@ -15,8 +15,6 @@ const RESISTOR_MAP = {
   white: 9
 }
 
-export const colorCode = (color) => {
-  return RESISTOR_MAP[color.toLowerCase()]
-};
+export const colorCode = color => RESISTOR_MAP[color]
 
 export const COLORS = Object.keys(RESISTOR_MAP)

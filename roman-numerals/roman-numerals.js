@@ -1,7 +1,3 @@
-//
-// This is only a SKELETON file for the 'Roman Numerals' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
 const ROMANS = [
   [1000, "M"],
   [900, "CM"],

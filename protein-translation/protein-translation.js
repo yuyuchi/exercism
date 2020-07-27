@@ -1,8 +1,4 @@
-//
-// This is only a SKELETON file for the 'Protein Translation' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-const codeon = {
+const AMINO_ACID = {
   AUG: 'Methionine',
   UUU: 'Phenylalanine',
   UUC: 'Phenylalanine',
@@ -21,25 +17,21 @@ const codeon = {
   UAG: 'STOP',
   UGA: 'STOP'
 }
-export const translate = (rna='') => {
-  if (!rna) {
-    return [];
-  }
 
-  const fragmentAmt = rna.length / 3;
-  var protein = [];
+export const translate = (rna='') => {
+  let protein = []
   
-  for (var i = 0; i < fragmentAmt; i++){
-    const fragment = rna.slice(i*3, (i+1)*3);
-    if (codeon[fragment]) {
-      if (codeon[fragment] === 'STOP'){
+  for (let i = 0; i < (rna.length / 3); i++){
+    const codon = rna.slice(i*3, (i+1)*3)
+
+    if (AMINO_ACID[codon]) {
+      if (AMINO_ACID[codon] === 'STOP'){
         break;
       }
-      protein.push(codeon[fragment]);
+      protein = [...protein, AMINO_ACID[codon]]
     } else {
-      throw new Error('Invalid codon');
+      throw new Error('Invalid codon')
     }
-
   }
-  return protein;
-};
+  return protein
+}

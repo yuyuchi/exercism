@@ -2,7 +2,7 @@
 // This is only a SKELETON file for the 'Roman Numerals' exercise. It's been provided as a
 // convenience to get you started writing code faster.
 //
-const ROMAN_NUMERALS = [
+const ROMANS = [
   [1000, "M"],
   [900, "CM"],
   [500, "D"],
@@ -19,13 +19,13 @@ const ROMAN_NUMERALS = [
 ]
 
 export const toRoman = (input) => {
-  var num = input
-  var roman = ''
+  let num = input
+  let roman = ''
   
-  for (var i = 0; i < ROMAN_NUMERALS.length; i++) {
-    while(num >= ROMAN_NUMERALS[i][0]) {
-      roman = roman.concat(ROMAN_NUMERALS[i][1])
-      num = num - ROMAN_NUMERALS[i][0]
+  for (let i = 0; i < ROMANS.length; i++) {
+    while(num >= ROMANS[i][0]) {
+      roman = `${roman}${ROMANS[i][1]}`
+      num -= ROMANS[i][0]
     }
   }
   return roman

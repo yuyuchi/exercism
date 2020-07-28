@@ -1,4 +1,6 @@
-export const gigasecond = (moment) => {
-  const gigamsec = Math.pow(10, 9) * 1000
-  return new Date(Date.parse(moment) + gigamsec)
-};
+const GIGA_SECONDS = 10 ** 9
+const toMilliSeconds = seconds => seconds * 1000
+
+export const gigasecond = (date) => { 
+  return new Date(date.getTime() + toMilliSeconds(GIGA_SECONDS))
+}

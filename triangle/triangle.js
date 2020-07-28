@@ -1,26 +1,21 @@
 export class Triangle {
   constructor(s1, s2, s3) {
-    this._s1 = s1
-    this._s2 = s2
-    this._s3 = s3
+    this._sides = [s1, s2, s3].sort((a, b) => a - b)
   }
 
   isValid() {
-    if (this._s1 > 0 || this._s2 > 0 || this._s3 > 0) {
-      return (this._s1 + this._s2 >= this._s3) && (this._s1 + this._s3 >= this._s2) && (this._s2 + this._s3 >= this._s1)
-    }
-    return false
+    return (this._sides.filter(x => x > 0).length === 3) && (this._sides[0] + this._sides[1] >= this._sides[2])
   }
 
   isEquilateral() {
-    return this.isValid() && (this._s1 === this._s2 && this._s1 === this._s3)
+    return this.isValid() && (this._sides[0] === this._sides[2])
   }
 
   isIsosceles() {
-    return this.isValid() && (this._s1 === this._s2 || this._s1 === this._s3 || this._s2 === this._s3)
+    return this.isValid() && (this._sides[1] === this._sides[0] || this._sides[1] === this._sides[2])
   }
 
   isScalene() {
-    return this.isValid() && (this._s1 !== this._s2 && this._s1 !== this._s3 && this._s2 !== this._s3)
+    return this.isValid() && !this.isEquilateral() && !this.isIsosceles()
   }
 }

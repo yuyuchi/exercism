@@ -22,9 +22,9 @@ export const translate = (rna = '', protein = []) => {
   if (rna.length > 0) {
     if (CODON.has(rna.substring(0, 3))) {
       const aminoAcid = CODON.get(rna.substring(0, 3))
-      return aminoAcid === 'STOP' ?
-        protein :
-        translate(rna.substring(3), [...protein, aminoAcid])
+      return aminoAcid === 'STOP' 
+        ? protein 
+        : translate(rna.substring(3), [...protein, aminoAcid])
     }
     throw new Error('Invalid codon')
   } 

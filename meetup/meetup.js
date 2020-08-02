@@ -1,14 +1,5 @@
 const TEENTH = [13, 14, 15, 16, 17, 18, 19]
-
-const DAY = {
-  Sunday: 0,
-  Monday: 1,
-  Tuesday: 2,
-  Wednesday: 3,
-  Thursday: 4,
-  Friday: 5,
-  Saturday: 6
-}
+const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 const getOrder = (arr, orderStr) => {
   switch (orderStr) {
@@ -25,27 +16,27 @@ const getOrder = (arr, orderStr) => {
   }
 }
 
-export const meetup = (year, month, order, weekday) =>  {
+export const meetup = (year, month, order, day) =>  {
   let meetupDate = new Date(year, (month - 1))
   
-  const isSameDay = (date) => {
+  const isSameDay = (date, day) => {
     meetupDate.setDate(date)
-    return meetupDate.getDay() === DAY[weekday]
+    return meetupDate.getDay() === WEEKDAYS.indexOf(day)
   }
 
   if (order === 'teenth') {
-    const day = TEENTH.find(d =>  isSameDay(d))
-    meetupDate.setDate(day)
-    
+    const date = TEENTH.find(d =>  isSameDay(d, day))
+    meetupDate.setDate(date)
+
   } else {
-    const days = new Date(year, month, 0).getDate() // the last day of the previous month
+    const daysInMonth = new Date(year, month, 0).getDate() // the last day of the previous month
     
-    const weekdays = [...new Array(days).keys()]
+    const dates = [...new Array(daysInMonth).keys()]
       .map(x => x + 1)
-      .filter(d => isSameDay(d))
+      .filter(d => isSameDay(d, day))
     
-    const day = getOrder(weekdays, order)
-    meetupDate.setDate(day)
+    const date = getOrder(dates, order)
+    meetupDate.setDate(date)
   }
   return meetupDate  
 }

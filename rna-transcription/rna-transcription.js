@@ -5,7 +5,6 @@ const NUCLEOTIDES = {
   'G': 'C',
 }
 
-export const toRna = (d) => {
-  const r = [...d].map((n) => NUCLEOTIDES[n]).join('')
-  return r
+export const toRna = (dna) => {
+  return [...dna].map((n) => NUCLEOTIDES[n]).join('')
 }

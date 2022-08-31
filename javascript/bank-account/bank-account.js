@@ -1,8 +1,3 @@
-//
-// This is only a SKELETON file for the 'Bank Account' exercise. It's been provided as a
-// convenience to get you started writing code faster.
-//
-
 export class BankAccount {
   constructor() {
     this._amount = 0;
@@ -20,17 +15,17 @@ export class BankAccount {
     this._isAccountClosed = true;
   }
 
-  deposit(currency) {
+  deposit(amount) {
     if (this._isAccountClosed) throw new ValueError("Account is not open");
-    if (currency < 0) throw new ValueError("Amount cannot be negative");
-    this._amount += currency;
+    if (amount < 0) throw new ValueError("Amount cannot be negative");
+    this._amount += amount;
   }
 
-  withdraw(currency) {
+  withdraw(amount) {
     if (this._isAccountClosed) throw new ValueError("Account is not open");
-    if (currency > this._amount) throw new ValueError("Balance is too low");
-    if (currency < 0) throw new ValueError("Amount cannot be negative");
-    this._amount -= currency;
+    if (amount > this._amount) throw new ValueError("Balance is too low");
+    if (amount < 0) throw new ValueError("Amount cannot be negative");
+    this._amount -= amount;
   }
 
   get balance() {

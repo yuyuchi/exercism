@@ -12,6 +12,7 @@ const isBracketCharacter = (s) => {
 const isPairedBrackets = (openBracket, closeBracket) => {
   return BRACKETS_MAP[openBracket] === closeBracket;
 };
+const isEmptyStack = (stack) => stack.length === 0;
 
 export const isPaired = (str) => {
   let template = str.split("");
@@ -28,6 +29,5 @@ export const isPaired = (str) => {
     }
   }
 
-  if (acc.length === 0) return true;
-  return false;
+  return isEmptyStack(acc);
 };

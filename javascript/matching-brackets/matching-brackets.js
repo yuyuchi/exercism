@@ -3,7 +3,7 @@ const BRACKETS_MAP = {
   "[": "]",
   "(": ")",
 };
-const checkIsBracket = (s) => {
+const isBracketCharacter = (s) => {
   return [
     ...Object.keys(BRACKETS_MAP),
     ...Object.values(BRACKETS_MAP),
@@ -15,7 +15,7 @@ export const isPaired = (str) => {
   for (let i = 0; i < template.length; i++) {
     // if the current one match the last one, pop the array
     // otherwise push the array
-    if (!checkIsBracket(template[i])) continue;
+    if (!isBracketCharacter(template[i])) continue;
 
     if (i !== 0 && BRACKETS_MAP[acc[acc.length - 1]] === template[i]) {
       acc.pop();

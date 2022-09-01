@@ -20,9 +20,12 @@ export const isPaired = (str) => {
   for (let i = 0; i < template.length; i++) {
     // if the current one match the last one, pop the array
     // otherwise push the array
-    if (!isBracketCharacter(template[i])) continue;
+    const lastBracket = acc[acc.length - 1];
+    const currentBracket = template[i];
 
-    if (i !== 0 && isPairedBrackets(acc[acc.length - 1], template[i])) {
+    if (!isBracketCharacter(currentBracket)) continue;
+
+    if (i !== 0 && isPairedBrackets(lastBracket, currentBracket)) {
       acc.pop();
     } else {
       acc.push(template[i]);

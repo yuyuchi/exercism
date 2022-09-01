@@ -18,8 +18,12 @@ export const isPaired = (str) => {
   let template = str.split("");
   let acc = [];
 
-  // if the current one match the last one, pop the array
-  // otherwise push the array
+  /**
+   * Solving this by using stack.
+   * Iterate through all the characters,
+   * if the current one match the last one, pop the array,
+   * otherwise push the array.
+   */
   template.every((currentBracket, i) => {
     const lastBracket = acc[acc.length - 1];
 

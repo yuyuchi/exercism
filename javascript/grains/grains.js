@@ -8,10 +8,9 @@
 export const square = (num) => {
   if (num < 1 || num > 64)
     throw new RangeError("square must be between 1 and 64");
-  return BigInt(Math.pow(2, num - 1));
+  return 1n << (BigInt(num) - 1n);
 };
 
 export const total = () => {
-  const squareBase = Array.from({ length: 64 }, (_v, i) => i + 1);
-  return squareBase.reduce((prev, curr) => BigInt(prev) + square(curr), 0);
+  return (1n << 64n) - BigInt(1);
 };

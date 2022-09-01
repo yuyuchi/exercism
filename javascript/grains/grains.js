@@ -12,5 +12,5 @@ export const square = (num) => {
 };
 
 export const total = () => {
-  return (1n << 64n) - BigInt(1);
+  return (1n << 64n) - 1n;
 };

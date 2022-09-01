@@ -17,20 +17,20 @@ const isEmptyStack = (stack) => stack.length === 0;
 export const isPaired = (str) => {
   let template = str.split("");
   let acc = [];
-  for (let i = 0; i < template.length; i++) {
-    // if the current one match the last one, pop the array
-    // otherwise push the array
-    const lastBracket = acc[acc.length - 1];
-    const currentBracket = template[i];
 
-    if (!isBracketCharacter(currentBracket)) continue;
+  // if the current one match the last one, pop the array
+  // otherwise push the array
+  template.every((currentBracket, i) => {
+    const lastBracket = acc[acc.length - 1];
+
+    if (!isBracketCharacter(currentBracket)) return true;
 
     if (i !== 0 && isPairedBrackets(lastBracket, currentBracket)) {
-      acc.pop();
+      return acc.pop();
     } else {
-      acc.push(template[i]);
+      return acc.push(currentBracket);
     }
-  }
+  });
 
   return isEmptyStack(acc);
 };

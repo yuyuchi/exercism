@@ -6,7 +6,8 @@
  */
 
 export const square = (num) => {
-  if (num < 1 || num > 64) throw new Error("square must be between 1 and 64");
+  if (num < 1 || num > 64)
+    throw new RangeError("square must be between 1 and 64");
   return BigInt(Math.pow(2, num - 1));
 };
 
